@@ -2,8 +2,8 @@ import streamlit as st
 import os
 import json
 
-INPUT_FOLDER="labelled_data"
-OUTPUT_FOLDER="refined_labels"
+INPUT_FOLDER=os.path.join("ML model","labelled_data")
+OUTPUT_FOLDER=os.path.join("ML model","refined_labels")
 if not os.path.exists(OUTPUT_FOLDER):
     os.makedirs(OUTPUT_FOLDER)
 st.title("📬 Message Labeling App")
