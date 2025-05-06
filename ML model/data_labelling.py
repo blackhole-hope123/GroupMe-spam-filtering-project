@@ -4,8 +4,8 @@ import os
 from textblob import TextBlob
 
 
-PRELABELLED_DATA_FOLDER="prelabelled_data"
-CLEAN_DATA_FOLDER="clean_data"
+PRELABELLED_DATA_FOLDER=os.path.join("ML model", "prelabelled_data")
+CLEAN_DATA_FOLDER=os.path.join("ML model", "clean_data")
 PRELABELLED_DATA_FILE="labelled_message.json"
 CLEAN_DATA_FILE="cleaned_message.json"
 
