@@ -1,8 +1,8 @@
-# Project: GroupMe Spam filtering API
+# Backend: the backend model construction
 
 ## Description
 
-This project designs a machine learning model to filter spam messages in GroupMe chats, where it used supervised learning, or more specifically the linear support vector machine algorithm. There are several steps in the constructing the model, first, one collects the data from GroupMe, and then one keeps only the relevant chat messages for analysis. Using a set of criteria, these messages are labelled by an algorithm as "spam" or "ham" (not spam). A refining process follows, where a streamlit app is designed so that one can refine the label, to ensure that the data is properly annotated. Finally, the model is train and evaluated on this data set.
+This part of the project designs a machine learning model to filter spam messages in GroupMe chats, where it used supervised learning, or more specifically the linear support vector machine algorithm. There are several steps in the constructing the model, first, one collects the data from GroupMe, and then one keeps only the relevant chat messages for analysis. Using a set of criteria, these messages are labelled by an algorithm as "spam" or "ham" (not spam). A refining process follows, where a streamlit app is designed so that one can refine the label, to ensure that the data is properly annotated. Finally, the model is train and evaluated on this data set.
 
 
 ## Project Structure Overview
