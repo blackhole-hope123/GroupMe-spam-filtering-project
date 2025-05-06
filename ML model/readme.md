@@ -8,7 +8,7 @@ This part of the project designs a machine learning model to filter spam message
 ## Project Structure Overview
 
 ```
-BDAA-final-project/
+ML model/
 ├── data/                                       # storing the original data
 ├── clean_data/                                 # storing only the messages by human in the GroupMe chats
 ├── labelled_data/                              # storing the labelled data (by a fixed set of rules)
