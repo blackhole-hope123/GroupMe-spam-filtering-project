@@ -1,0 +1,8 @@
+joblib 
+scikit-learn
+pandas
+requests 
+textblob 
+flask 
+flask-cors
+gunicorn
