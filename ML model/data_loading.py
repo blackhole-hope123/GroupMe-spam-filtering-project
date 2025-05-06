@@ -1,7 +1,7 @@
 import json
 import os
-RAW_DATA_FOLDER="data"
-CLEAN_DATA_FOLDER="clean_data"
+RAW_DATA_FOLDER=os.path.join("ML model","data")
+CLEAN_DATA_FOLDER=os.path.join("ML model","clean_data")
 RAW_DATA_FILE="message.json"
 CLEAN_DATA_FILE="cleaned_message.json"
 
