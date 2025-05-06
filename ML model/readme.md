@@ -1,44 +1,25 @@
-# project: GroupMe Spam filtering API
+# Project: GroupMe Spam filtering API
 
 ## Description
 
-This project design a . This project used supervised learning to solve the captioned image recognition problem. A Convolutional neural network (CNN) is trained and evaluated on the dataset. Moreover, the project explores related phenomena such as overfitting and underfitting, as well as the impact of techniques such as Batch Normalization. A visualization of the CNN is also given. 
+This project designs a machine learning model to filter spam messages in GroupMe chats, where it used supervised learning, or more specifically the linear support vector machine algorithm. There are several steps in the constructing the model, first, one collects the data from GroupMe, and then one keeps only the relevant chat messages for analysis. Using a set of criteria, these messages are labelled by an algorithm as "spam" or "ham" (not spam). A refining process follows, where a streamlit app is designed so that one can refine the label, to ensure that the data is properly annotated. Finally, the model is train and evaluated on this data set.
 
 
 ## Project Structure Overview
 
 ```
 BDAA-final-project/
-├── data/                                       # Data storage
-├── results/                                    # results of explorations
-├── main.py                                     # the main program for traffic sign identification
-├── observe_overfitting.py                      # to observe overfitting when regularization is weak
-├── observe_underfitting.py                     # to observe underfitting when regularization is strong
-├── data_preprocessing_batchnorm.py             # to study the impact of data preprocessing and batch normalization on test accuracy
-├── kernel_visualization.py                     # to visualize the first layer filters
-├── utils.py                                    # functions that will be frequently used, including those for loading data, preprocessing data,and providing the Convolutional Neural Network Model
-├── requirements.txt                            # required packages
+├── data/                                       # storing the original data
+├── clean_data/                                 # storing only the messages by human in the GroupMe chats
+├── labelled_data/                              # storing the labelled data (by a fixed set of rules)
+├── refined_labels/                             # storing the refined labelled data (after the human verification)
+├── data_labelling.py                           # python file to label the data by a fixed set of rules
+├── data_loading.py                             # python file to load the data from the original data downloaded from GroupMe
+├── label_refining_streamlit_app.py             # streamlit app for human annotator to refine the labels
+├── model_training_and_evaluation.py            # python file to train and evaluate the (linear SVM) model
+├── spam_model.pkl                              # file recording parameters of the model
 └── README.md                                   # This file
 ```
-
-## Detailed Directory Explanations
-
-
-### 📊 `data/`
-Organized storage for project data files:
-- `Test/`: the test data, image only
-- `Train/`: the training data
-- `Meta.csv/`: different attributes of images, including class ID (label), color ID and shape ID.
-- `Train.csv/`: attributes of the training images
-- `Test.csv/`: attributes of the testing images, including the class ID.
-
-
-### 📓 `results/`
-Result of explorations and analysis.
-- `A visualization/`: Contains a visualization of the first layer filters
-- `impact of data preprocessing and batch normalization`: A table showing the power of data preprocessing and batch normalization on test accuracy
-- `overfitting and underfitting/`: Two heatmaps demonstrating overfitting and underfitting
-
 
 ### Example Usage
 
@@ -46,21 +27,21 @@ Result of explorations and analysis.
 
 1. Clone this repository
 ```bash
-git clone https://github.com/blackhole-hope123/BDAA-final-project.git
-cd C:\Users\your-username\BDAA-final-projectpath_to_cloned_repo
+git clone https://github.com/blackhole-hope123/GroupMe-spam-filtering-project.git
+cd C:\Users\your-username\GroupMe-spam-filtering-project
 ```
 
 2. Install the packages
 ```bash
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 #### Running Scripts
-for example, to run the main program:
+for example, to run the model training and evaluation script:
 ```bash
-python main.py
+cd "ML model"
+python model_training_and_evaluation.py 
 ```
 
 ## Acknowledgement 
-The dataset is from https://www.kaggle.com/datasets/meowmeowmeowmeowmeow/gtsrb-german-traffic-sign
-
+The dataset is from my own GroupMe chats.
