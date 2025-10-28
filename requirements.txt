@@ -1,8 +1,8 @@
-joblib 
-scikit-learn
-pandas
-requests 
-textblob 
-flask 
-flask-cors
-gunicorn
+joblib==1.4.2
+scikit-learn==1.5.2
+pandas==2.2.3
+requests==2.32.3
+textblob==0.19.0
+Flask==3.0.3
+Flask-Cors==5.0.0
+gunicorn==23.0.0
