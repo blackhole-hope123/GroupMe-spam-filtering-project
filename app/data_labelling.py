@@ -4,8 +4,8 @@ import os
 from textblob import TextBlob
 
 
-PRELABELLED_DATA_FOLDER=os.path.join("ML model", "prelabelled_data")
-CLEAN_DATA_FOLDER=os.path.join("ML model", "clean_data")
+PRELABELLED_DATA_FOLDER=os.path.join("app","ML model", "labelled_data")
+CLEAN_DATA_FOLDER=os.path.join("app","ML model", "clean_data")
 PRELABELLED_DATA_FILE="labelled_message.json"
 CLEAN_DATA_FILE="cleaned_message.json"
 
@@ -63,4 +63,5 @@ def is_spam(msg):
         return "spam"
     return "ham"
 
-annotate_data("clean_data")
+
+annotate_data(CLEAN_DATA_FOLDER)

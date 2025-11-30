@@ -8,8 +8,8 @@ CORS(app)
 
 log = []
 
-model_path = os.path.join(os.path.dirname(__file__), "ML model", "spam_model.pkl")
-model = joblib.load(model_path)
+pipeline_path = os.path.join(os.path.dirname(__file__), "ML model", "groupme_spam_pipeline.pkl")
+pipeline = joblib.load(pipeline_path)
 
 GROUPME_BOT_ID = os.getenv("GROUPME_BOT_ID")
 
@@ -70,7 +70,7 @@ def groupme_webhook():
         data = request.get_json()
         message = data.get("text", "")
         if message:
-            prediction = model.predict([message])[0]
+            prediction = pipeline.predict([message])[0]
             result = "Spam" if prediction == 1 else "Ham"
             if prediction == 1:
                 print(f"Spam detected: {message}")
