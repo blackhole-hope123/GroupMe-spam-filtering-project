@@ -83,6 +83,6 @@ stages:
         steps:
           - task: AzureWebAppContainer@1
             inputs:
-              azureSubscription: 'YOUR-AZURE-SERVICE-CONNECTION'
-              appName: 'YOUR-WEBAPP-NAME'
+              azureSubscription: 'Azure subscription 1'
+              appName: 'GroupMe-Spam-Filtering-App'
               containers: '$(containerRegistry)/$(imageRepository):$(tag)'
