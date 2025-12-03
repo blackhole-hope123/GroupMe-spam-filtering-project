@@ -1,0 +1,88 @@
+trigger:
+  - main
+
+variables:
+  python.version: '3.12'
+  dockerRegistryServiceConnection: 'MY-ACR-SERVICE-CONNECTION'
+  imageRepository: 'groupme-spam-filter'
+  containerRegistry: 'MY_ACR.azurecr.io'
+  tag: '$(Build.BuildId)'
+
+stages:
+  - stage: Build
+    displayName: "Build & Test"
+    jobs:
+      - job: BuildJob
+        pool:
+          vmImage: ubuntu-latest
+
+        steps:
+          - checkout: self
+
+          - task: UsePythonVersion@0
+            inputs:
+              versionSpec: '$(python.version)'
+
+          - script: |
+              python -m pip install --upgrade pip
+              pip install -r app/requirements.txt
+            displayName: "Install Python dependencies"
+
+          - script: |
+              python - <<EOF
+              import joblib, os
+              path = "app/ML model/groupme_spam_pipeline.pkl"
+              assert os.path.exists(path), f"Model file missing: {path}"
+              joblib.load(path)
+              print("Model loaded successfully")
+              EOF
+            displayName: "Verify ML pipeline loads"
+
+          - script: |
+              echo "No unit tests yet. Add pytest here if you want."
+            displayName: "Run unit tests (placeholder)"
+
+  - stage: Docker
+    displayName: "Build & Push Docker Image"
+    dependsOn: Build
+    jobs:
+      - job: DockerBuild
+        pool:
+          vmImage: ubuntu-latest
+
+        steps:
+          - checkout: self
+
+          - task: Docker@2
+            displayName: Build docker image
+            inputs:
+              repository: $(imageRepository)
+              command: build
+              Dockerfile: app/Dockerfile
+              tags: |
+                $(tag)
+
+          - task: Docker@2
+            displayName: Push docker image
+            inputs:
+              containerRegistry: $(dockerRegistryServiceConnection)
+              repository: $(imageRepository)
+              command: push
+              tags: |
+                $(tag)
+
+  - stage: Deploy
+    displayName: "Deploy to Azure Web App"
+    dependsOn: Docker
+
+    jobs:
+      - job: DeployJob
+        pool:
+          vmImage: 'ubuntu-latest'
+
+        steps:
+          - task: AzureWebAppContainer@1
+            inputs:
+              azureSubscription: 'YOUR-AZURE-SERVICE-CONNECTION'
+              appName: 'YOUR-WEBAPP-NAME'
+              containers: '$(containerRegistry)/$(imageRepository):$(tag)'
