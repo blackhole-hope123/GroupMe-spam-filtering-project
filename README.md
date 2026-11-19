@@ -75,8 +75,6 @@ GroupMe-spam-filtering-project/
 └── README.md                        # Main project documentation
 ```
 
-*Note: The model training script name is abbreviated above. Update the directory structure with its exact filename.*
-
 ## 4. Application Workflow
 
 The project follows a modular workflow:
@@ -111,7 +109,6 @@ Docker configuration files define the application environments. Azure deployment
 | Label Refinement Interface | Streamlit |
 | Containerization | Docker, Docker Compose |
 | Cloud Deployment | Microsoft Azure |
-| CI/CD | Azure Pipelines |
 | Version Control | Git |
 
 ## 6. Testing and Validation
