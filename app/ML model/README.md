@@ -13,11 +13,8 @@ ML model/
 ├── clean_data/                                 # storing only the messages by human in the GroupMe chats
 ├── labelled_data/                              # storing the labelled data (by a fixed set of rules)
 ├── refined_labels/                             # storing the refined labelled data (after the human verification)
-├── data_labelling.py                           # python file to label the data by a fixed set of rules
-├── data_loading.py                             # python file to load the data from the original data downloaded from GroupMe
-├── label_refining_streamlit_app.py             # streamlit app for human annotator to refine the labels
 ├── model_training_and_evaluation.py            # python file to train and evaluate the (linear SVM) model
-├── spam_model.pkl                              # file recording parameters of the model
+├── groupme_spam_pipeline.pkl                   # file recording parameters of the model
 └── README.md                                   # This file
 ```
 
