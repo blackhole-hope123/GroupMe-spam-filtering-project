@@ -137,4 +137,4 @@ Specific build commands, environment variables, service ports, and deployment pr
 
 For details about dataset preparation, model training, evaluation, and saved model artifacts, refer to:
 
-[Machine Learning Pipeline Documentation](app/ML%20model/README.md)
+[ML Model README](app/ML%20model/README.md)
